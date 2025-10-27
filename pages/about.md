@@ -20,20 +20,10 @@ padding: 6em
 
 ## About CollectionBuilder CSV
 
-This demo collection features items from the University of Idaho Library's [Digital Collections](https://www.lib.uidaho.edu/digital/), and is build using [CollectionBuilder-CSV](https://github.com/CollectionBuilder/collectionbuilder-csv).
+Most people think of Portlandia or Seattle as a ecotopic microcosm of the Pacific Northwest while their imaginations skip over the interior portion of the region. If people think of the Inland Northwest--the region stretching from the Cascades to southern Oregon and from Spokane to southwestern Montana--they tend to think of it as empty, forlorn, or a hotbed of radical politics with a homogenous population. In fact, the inland northwest has ancient histories and great diversity of peoples and landscapes. 
 
-CollectionBuilder-CSV is a "Stand Alone" template for creating digital collection and exhibit websites using Jekyll, given:
+This digital Peoples' Guide seeks to fill in the gaps by drawing attention inland from the coast to feature the rich histories and diverse peoples through short place stories from throughout the Interior Pacific Northwest region of North America. 
 
-- a CSV of collection metadata
-- a folder of images, PDFs, audio, or video files
+Students in Dr. Alyssa Kreikemeier's History of Idaho and the Pacific Northwest class have curated multi-media sources and written stories about places that showcase the diverse peoples and places of an often overlooked or misunderstood region of the United States.
 
-Driven by your collection metadata, the template generates engaging visualizations to browse and explore your objects.
-The resulting static site can be hosted on any basic web server.
 
-[CollectionBuilder](https://github.com/CollectionBuilder/) is an set of open source tools for creating digital collection and exhibit websites that are driven by metadata and powered by modern static web technology.
-See [CB Docs](https://collectionbuilder.github.io/cb-docs/) for detailed information.
-
-{% include feature/image.html objectid="demo_001" width="75" %} 
-
-<!-- IMPORTANT!!! DELETE this comment and the include below when you are finished editing this page for your collection. The include below introduces about page features. They will show up on your collection's about page until you delete it.  -->
-{% include cb/about_the_about.md %} 
