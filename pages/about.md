@@ -9,7 +9,7 @@ about-featured-image: demo_031
 # set background-position for featured image, "center", "top", "bottom"
 position: bottom
 # major heading to display over featured image
-heading: About the Collection
+heading: Peoples' Guide to the Inland Pacific Northwest
 # paragraph text below heading in featured image
 sub-heading: 
 # additional padding added to the feature to increase size. Give value in em or px, e.g. "5em".
@@ -18,7 +18,7 @@ padding: 6em
 # Look in _includes/feature for options to easily add features to the page
 ---
 
-## About CollectionBuilder CSV
+## About
 
 Most people think of Portlandia or Seattle as a ecotopic microcosm of the Pacific Northwest while their imaginations skip over the interior portion of the region. If people think of the Inland Northwest--the region stretching from the Cascades to southern Oregon and from Spokane to southwestern Montana--they tend to think of it as empty, forlorn, or a hotbed of radical politics with a homogenous population. In fact, the inland northwest has ancient histories and great diversity of peoples and landscapes. 
 
