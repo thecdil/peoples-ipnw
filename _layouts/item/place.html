@@ -1,0 +1,58 @@
+---
+# custom layout for place records
+layout: page
+gallery: true
+#custom-foot: js/modal-hash-js.html
+---
+{% assign children = site.data.ipnw_place_objects | where_exp: 'item','item.parentid == page.objectid' %}
+{% assign featured-image = children | where: 'objectid', page.featured_image_id | first %}
+
+<div id="about-feature">
+    <div class="about-title-box">    
+        <div class="ps-5 my-3">
+            <h1 class="display-1">{{ page.title }}</h1>
+        </div>
+    </div>
+</div>
+
+<div id="about-wrapper">
+    <div id="about-toc-wrapper">
+        {% unless page.toc == false %}
+        <div id="about-toc">
+            <div id="about-toc-title">
+                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#about-toc-list" aria-expanded="false" aria-controls="about-toc-list">
+                    Contents
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="about-toc-list" class="collapse" > 
+            {% include cb/jekyll-toc.html html=content sanitize=true h_min=1 h_max=3 skip_no_ids=true class="jekyll-toc-list" credits=page.credits %}
+            </div>
+        </div>
+        {% endunless %}
+    </div>
+    <div id="about-contents-wrapper">
+        <div class="row">
+            <div class="col-md-6 p-3">{% include feature/image.html objectid=featured-image.image_small caption=featured-image.title %}</div>
+            <div class="col-md-6 p-3">{% include item/mini-map.html %}</div>
+        </div>
+
+        <div id="info">
+            <h2>Place</h2>
+
+            <p><strong>Location:</strong> {{ page.location }}, {{ page.state }}</p>
+            <p><strong>Subjects:</strong> {{ page.subject }}</p>
+            <p><strong>Time:</strong> {{ page.time }}</p>
+        </div>
+
+            <h2>Essay</h2>
+
+        {{ content }}
+
+        <h2>Sources</h2>
+
+    </div>
+    
+</div>
