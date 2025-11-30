@@ -46,6 +46,12 @@ metadata: ipnw_places
 #     extension: 'html' 
 #     filter: 'objectid'  
 
+# activate collection
+collections:
+  essays:
+    output: false
+
+
 ##########
 # ORGANIZATION SETTINGS
 #

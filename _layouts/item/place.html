@@ -2,10 +2,11 @@
 # custom layout for place records
 layout: page
 gallery: true
-#custom-foot: js/modal-hash-js.html
+custom-foot: js/modal-hash-js.html
 ---
 {% assign children = site.data.ipnw_place_objects | where_exp: 'item','item.parentid == page.objectid' %}
 {% assign featured-image = children | where: 'objectid', page.featured_image_id | first %}
+{% assign essay = site.essays | where: 'objectid', page.objectid | first %}
 
 <div id="about-feature">
     <div class="about-title-box">    
@@ -47,11 +48,13 @@ gallery: true
             <p><strong>Time:</strong> {{ page.time }}</p>
         </div>
 
-            <h2>Essay</h2>
+        <h2>{{ essay.title }}</h2>
 
-        {{ content }}
+        {{ essay.content }}
 
-        <h2>Sources</h2>
+        <h2>Primary Sources</h2>
+
+        {% include item/child/compound-item-modal-gallery.html %}
 
     </div>
     
