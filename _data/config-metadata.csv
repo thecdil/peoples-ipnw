@@ -1,13 +1,18 @@
 field,display_name,browse_link,external_link,dc_map,schema_map
 title,Title,,,DCTERMS.title,headline
 creator,Creator,,,DCTERMS.creator,creator
+time_period,Time Period,
+category,Category,
 date,Date Created,,,DCTERMS.date,dateCreated
 description,Description,,,DCTERMS.description,description
+significance,Significance,
 subject,Subjects,true,,DCTERMS.subject,keywords
 location,Location,,,,contentLocation
+state,State,
 latitude,Latitude,,,,
 longitude,Longitude,,,,
 source,Source,,,,
+cataloger,Cataloger,
 identifier,Source Identifier,,,,
 type,Type,,,DCTERMS.type,
 format,Format,,,,encodingFormat

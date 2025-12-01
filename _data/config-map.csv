@@ -1,5 +1,5 @@
 field,display_name,search
-date,Date,true
-creator,Creator,true
+time_period,Time Period,true
 subject,Subjects,true
 location,Location,true
+state,State,true
