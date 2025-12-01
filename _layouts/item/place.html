@@ -1,18 +1,70 @@
 ---
 # custom layout for place records
-layout: page
+layout: default
 gallery: true
 custom-foot: js/modal-hash-js.html
 ---
-{% assign children = site.data.ipnw_place_objects | where_exp: 'item','item.parentid == page.objectid' %}
-{% assign featured-image = children | where: 'objectid', page.featured_image_id | first %}
+{% assign children = site.data[site.metadata] | where_exp: 'item','item.parentid == page.objectid' %}
 {% assign essay = site.essays | where: 'objectid', page.objectid | first %}
 
+{% capture all-page-content %}
+<h2 id="place" class="mt-5">The Place</h2>
+
+<p><strong>Location:</strong> {{ page.location }}, {{ page.state }}</p>
+<p><strong>Subjects:</strong> {{ page.subject }}</p>
+<p><strong>Time:</strong> {{ page.time_period }}</p>
+
+{% include item/mini-map.html %}
+
+<h2 id="title" class="mt-4">{{ essay.title }}</h2>
+
+<p class="fs-6 fw-semibold ps-4"><em>by {{ page.cataloger }}</em></p>
+
+{{ essay.content }}
+
+<h2 id="primary-sources">Primary Sources</h2>
+{%- endcapture -%}
+
+{% assign jumboId = page.featured_image_id %}
+{% if jumboId contains '/' %}
+{% assign jumboSrc = jumboId | relative_url %}
+{% else %}
+{% assign jumboItem = site.data[site.metadata] | where: "objectid", jumboId | first %}
+{% capture jumboSrc %}{{ jumboItem.object_location | default: jumboItem.image_small | relative_url }}{% endcapture %}
+{%- endif -%}
+
+<style>
+    #about-feature {
+        padding: 4rem 0;
+        margin-bottom: 1rem;
+        
+        background-color: #e9ecef;
+        background-image: url({{ jumboSrc }});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .about-title-box {
+        padding-top: 6em;
+        padding-bottom: 1em;
+    }
+    .about-title {
+        padding-left: 15% !important;
+    }
+    @media screen and (max-width: 576px) {
+        .about-title-box {
+            padding-top: min(6em, 45vh);
+        }
+        .about-title {
+            padding-left: 1rem !important;
+        }
+    }
+</style>
 <div id="about-feature">
     <div class="about-title-box">    
-        <div class="ps-5 my-3">
+        <div class="p-2 text-start text-white bg-dark bg-opacity-75 about-title">
             <h1 class="display-1">{{ page.title }}</h1>
-        </div>
+        </div>     
     </div>
 </div>
 
@@ -29,33 +81,21 @@ custom-foot: js/modal-hash-js.html
                 </button>
             </div>
             <div id="about-toc-list" class="collapse" > 
-            {% include cb/jekyll-toc.html html=content sanitize=true h_min=1 h_max=3 skip_no_ids=true class="jekyll-toc-list" credits=page.credits %}
+            {% include cb/jekyll-toc.html html=all-page-content sanitize=true h_min=1 h_max=3 skip_no_ids=true class="jekyll-toc-list" credits=page.credits %}
             </div>
         </div>
         {% endunless %}
     </div>
     <div id="about-contents-wrapper">
-        <div class="row">
-            <div class="col-md-6 p-3">{% include feature/image.html objectid=featured-image.image_small caption=featured-image.title %}</div>
-            <div class="col-md-6 p-3">{% include item/mini-map.html %}</div>
-        </div>
 
-        <div id="info">
-            <h2>Place</h2>
-
-            <p><strong>Location:</strong> {{ page.location }}, {{ page.state }}</p>
-            <p><strong>Subjects:</strong> {{ page.subject }}</p>
-            <p><strong>Time:</strong> {{ page.time }}</p>
-        </div>
-
-        <h2>{{ essay.title }}</h2>
-
-        {{ essay.content }}
-
-        <h2>Primary Sources</h2>
+        {{ all-page-content }}
 
         {% include item/child/compound-item-modal-gallery.html %}
 
     </div>
     
+    {%- if site.data.theme.browse-buttons == true -%}
+        {% include item/browse-buttons.html %}
+    {%- endif -%}
+
 </div>
