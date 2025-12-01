@@ -7,14 +7,14 @@
     This include requires the Liquid object "child" to be present! The item display requires the compound object item includes in "item/child/".
 
 {% endcomment %}
-<div class="row row-cols-2 row-cols-lg-4 g-2">
+<div class="row row-cols-1 row-cols-lg-2 g-2 mt-3">
     {% for child in children %}
     <div class="col">
         <div class="card h-100">
             <div class="my-auto">
                 <div class="card-body text-center" id="{{ child.objectid }}Card">
                 
-                    {% if child.title %}<div class="small text-dark mb-2">{{ child.title | truncatewords: 4 }}</div>{% endif %}
+                    {% if child.title %}<div class="small text-dark mb-2">{{ child.title }}</div>{% endif %}
                     
                     <div class="mb-2">
                         {% if child.image_thumb or child.image_small %}
@@ -28,6 +28,8 @@
                         {% endif %}
                     </div>
 
+                    <p>{{ child.significance }}</p>
+
                     <!-- child object modal button -->
                     <a id="item-{{ forloop.index }}"
                         role="button"
@@ -35,7 +37,7 @@
                         href="#{{ child.objectid }}"
                         onclick="window.location.hash='{{ child.objectid }}'"
                         class="btn btn-sm btn-outline-secondary small stretched-link">
-                        {{ child.display_template | upcase | default: "Item" }} <svg class="bi icon-sprite" fill="currentColor" aria-hidden="true"><use xlink:href="{{ '/assets/css/cb-icons.svg' | relative_url }}#icon-{{ child.display_template | default: 'file'}}"/></svg>
+                        {{ child.category | upcase | default: "Item" }} <svg class="bi icon-sprite" fill="currentColor" aria-hidden="true"><use xlink:href="{{ '/assets/css/cb-icons.svg' | relative_url }}#icon-{{ child.display_template | default: 'file'}}"/></svg>
                     </a> 
 
                     <!-- child object modal -->
