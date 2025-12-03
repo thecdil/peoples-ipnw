@@ -47,15 +47,21 @@
     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
+    var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 20,
+        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+    });
     /* add base map switcher */
     var baseMaps = {
+        "USGS US Imagery": USGS_USImageryTopo,
         "Esri World StreetMap": Esri_WorldStreetMap,
         "Esri National Geo": Esri_NatGeoWorldMap,
         "Esri Imagery": Esri_WorldImagery
     };
+    
     L.control.layers(baseMaps).addTo(map);
     /* load base map */
-    {{ include.basemap | default: 'Esri_WorldImagery' }}.addTo(map);
+    {{ include.basemap | default: 'USGS_USImageryTopo' }}.addTo(map);
     /* add fullscreen control */ 
     map.addControl(new L.Control.Fullscreen());
 
